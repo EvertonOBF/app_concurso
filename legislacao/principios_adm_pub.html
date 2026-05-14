@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado - Princípios da Administração Pública</title>
+    <style>
+        :root {
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #5a6a85;
+            --primary: #34495e;
+            --accent: #3498db;
+            --correct-bg: #27ae60;
+            --incorrect-bg: #e74c3c;
+            --feedback-bg: #f8fbfe;
+            --border-color: #e1e8ed;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .header {
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header h1 { font-size: 1.8rem; margin-bottom: 10px; }
+        .header p { font-size: 1rem; color: #ecf0f1; opacity: 0.9; }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .question-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease;
+        }
+
+        .question-card:hover { border-color: var(--accent); }
+
+        .statement {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            width: 100%;
+            text-align: left;
+            padding: 16px 20px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--text-main);
+            background-color: #fdfdfd;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .option-btn:hover:not(.disabled) {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        .option-btn.correct {
+            background-color: var(--correct-bg) !important;
+            border-color: var(--correct-bg) !important;
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .option-btn.incorrect {
+            background-color: var(--incorrect-bg) !important;
+            border-color: var(--incorrect-bg) !important;
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .option-btn.disabled { cursor: default; }
+
+        .feedback-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--feedback-bg);
+            border-left: 5px solid var(--accent);
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .feedback-box .lei {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--primary);
+        }
+
+        .feedback-box .pulo-gato {
+            display: block;
+            padding: 12px;
+            background-color: #fffbeb;
+            border: 1px solid #fef3c7;
+            border-radius: 6px;
+            color: #b45309;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .question-card { padding: 18px; }
+            .statement { font-size: 1.05rem; }
+            .option-btn { padding: 14px 16px; font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Simulado</h1>
+        <p>Princípios da Administração Pública — Doutrina e Jurisprudência Aplicada</p>
+    </div>
+
+    <div class="container">
+
+        <div class="question-card" id="q1">
+            <div class="statement">
+                1. (Caso Prático / FGV) O Prefeito do Município X exonerou o Diretor de uma Escola Municipal (ocupante de cargo em comissão), fazendo constar expressamente no ato que a motivação era o fechamento definitivo da referida unidade escolar por cortes orçamentários. Contudo, na semana seguinte, comprovou-se que a escola continuou funcionando normalmente e um novo Diretor foi nomeado. Aplicando-se a Teoria dos Motivos Determinantes, o ato de exoneração é:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) Válido, pois sendo cargo em comissão de livre nomeação e exoneração, a indicação dos motivos é irrelevante para a eficácia do ato.</button>
+                <button class="option-btn" data-correct="true">B) Nulo, pois uma vez que o gestor decide motivar o ato, a validade deste fica estritamente vinculada à veracidade e existência dos motivos alegados.</button>
+                <button class="option-btn" data-correct="false">C) Anulável, cabendo convalidação posterior pela Administração caso apresente um novo motivo de interesse público superveniente.</button>
+                <button class="option-btn" data-correct="false">D) Eficaz, ofendendo apenas a moralidade subjetiva, mas preservando o mérito administrativo inalcançável pelo Poder Judiciário.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei / Doutrina:</strong> Teoria dos Motivos Determinantes e Art. 50 da Lei nº 9.784/99. A motivação declarada vincula o ato. Se o motivo for falso ou inexistente, o ato padece de vício insanável de finalidade/motivo.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: Cargos em comissão ("ad nutum") não exigem motivação para exoneração na regra geral. Porém, a banca te testa na exceção: se o gestor motivar (escrever o porquê), ele fica preso ao que escreveu. Motivo falso = Ato Nulo!</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q2">
+            <div class="statement">
+                2. (Jurisprudência STF / CEBRASPE) O Reitor de uma Universidade Estadual nomeia seu cunhado (parente em 2º grau por afinidade) para o cargo estritamente político de Secretário de Estado de Ciência e Tecnologia (ato delegado pelo Governador) e, na mesma publicação, nomeia a sobrinha de sua esposa para um cargo em comissão de coordenação pedagógica interna. À luz da Súmula Vinculante nº 13 do STF, assinale a alternativa correta:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) Ambas as nomeações configuram flagrante prática de nepotismo, ofendendo a impessoalidade.</button>
+                <button class="option-btn" data-correct="true">B) A nomeação para o cargo político (Secretário), em regra, não configura nepotismo; contudo, a nomeação para a coordenação pedagógica viola a súmula.</button>
+                <button class="option-btn" data-correct="false">C) Nenhuma configura nepotismo, pois o parentesco por afinidade civil extingue-se para fins administrativos no âmbito das autarquias educacionais.</button>
+                <button class="option-btn" data-correct="false">D) A nomeação do cunhado é ilegal por ser linha colateral, mas a da sobrinha da esposa é válida por ultrapassar o 3º grau de parentesco.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Súmula Vinculante nº 13 do STF. A vedação ao nepotismo alcança cônjuge, companheiro ou parente em linha reta, colateral ou por afinidade, até o terceiro grau.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: O STF pacificou que cargos de natureza POLÍTICA (Secretários de Estado/Município e Ministros) não entram na vedação automática do nepotismo, salvo comprovada fraude ou falta de qualificação técnica. Já os cargos puramente administrativos (coordenação), até o 3º grau, são terminantemente proibidos.</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q3">
+            <div class="statement">
+                3. (Doutrina / FCC) Uma Secretaria de Educação constata que, há 7 anos, concedeu indevidamente uma gratificação de titulação a um grupo de professores devido a um erro exclusivo de interpretação da própria Administração, estando os servidores de absoluta boa-fé. Ao analisar a possibilidade de anular tal ato (Princípio da Autotutela), o gestor deve observar que:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) O ato deve ser anulado imediatamente com efeitos *ex tunc*, pois atos inconstitucionais ou ilegais não se convalidam pelo decurso do tempo.</button>
+                <button class="option-btn" data-correct="false">B) A Administração deve revogar o benefício por razões de conveniência, cobrando a devolução dos valores recebidos nos últimos 5 anos.</button>
+                <button class="option-btn" data-correct="true">C) Operou-se a decadência administrativa, impedindo a anulação do ato de efeitos favoráveis aos destinatários em virtude do Princípio da Segurança Jurídica.</button>
+                <button class="option-btn" data-correct="false">D) A autotutela é absoluta no direito brasileiro, prevalecendo a supremacia do interesse público sobre a confiança legítima do servidor em qualquer prazo.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 54 da Lei nº 9.784/99 (aplicada por simetria aos entes federados). O direito da Administração de anular os atos administrativos de que decorram efeitos favoráveis para os destinatários decai em cinco anos, contados da data em que foram praticados, salvo comprovada má-fé.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: A Autotutela (poder de anular seus próprios atos) não é ilimitada! Ela encontra freio no Princípio da Segurança Jurídica (Proteção à Confiança). Passou de 5 anos e há boa-fé? O Estado perde o direito de anular (decadência).</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q4">
+            <div class="statement">
+                4. (Jurisprudência / Vunesp) Professores da rede pública municipal impetram mandado de segurança visando impedir que a Prefeitura divulgue nominalmente suas remunerações brutas no Portal da Transparência, alegando violação ao princípio da intimidade e risco à segurança pessoal. Conforme tese firmada pelo STF, a divulgação nominal dos salários:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="true">A) É legítima e decorre diretamente do Princípio da Publicidade, prevalecendo a transparência estatal e o controle social sobre o interesse privado.</button>
+                <button class="option-btn" data-correct="false">B) É inconstitucional, devendo a transparência ser garantida mediante a divulgação exclusiva do número de matrícula do servidor, omitindo-se o nome.</button>
+                <button class="option-btn" data-correct="false">C) Viola a Lei Geral de Proteção de Dados (LGPD), exigindo prévio consentimento expresso e escrito de cada agente público educacional.</button>
+                <button class="option-btn" data-correct="false">D) É permitida apenas para ocupantes de cargos de chefia e direção, sendo vedada para a base docente do quadro efetivo.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 37, *caput*, da CF/88 e tese do STF (Tema 483 / ARE 652777). A remuneração dos agentes públicos é informação de interesse coletivo.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: As bancas tentam usar a LGPD ou o "direito à intimidade" como distratores. O STF entende que quem entra no serviço público adere a um regime de direito público, onde o cidadão que paga os impostos tem o direito de saber exatamente quanto cada servidor ganha nominalmente.</div>
+            </div>
+        </div>
+
+        <div class="statement">
+            </div>
+        <div class="question-card" id="q5">
+            <div class="statement">
+                5. (Caso Prático / CEBRASPE) Faltando dois meses para o término do ano letivo, 15 professores pedem exoneração de uma escola estadual. Com o intuito de não interromper as aulas e focado no Princípio da Eficiência, o Diretor contrata verbalmente novos docentes, sem processo seletivo simplificado ou contrato formalizado por escrito. Sob a ótica do Direito Administrativo, o ato do Diretor é:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) Inteiramente válido, pois o Princípio da Continuidade do Serviço Público autoriza afastar a forma legal em situações de emergência educacional.</button>
+                <button class="option-btn" data-correct="true">B) Nulo, pois o contrato verbal com a Administração Pública é regra geral vedado, não podendo a eficiência justificar o atropelo da legalidade estrita.</button>
+                <button class="option-btn" data-correct="false">C) Anulável, gerando plenos efeitos jurídicos e contagem de tempo para concurso até que o Tribunal de Contas casse a eficácia do ato.</button>
+                <button class="option-btn" data-correct="false">D) Inexistente, mas passível de convalidação discricionária pelo Secretário de Educação por meio de portaria retroativa.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 37, *caput* (Legalidade), Art. 37, IX da CF/88 e Art. 95 da Lei nº 14.133/21. O contrato verbal com a Administração é nulo e de nenhum efeito (salvo pequenas compras de pronto pagamento).</div>
+                <div class="pulo-gato">💡 Pulo do Gato: A "Eficiência" é a grande armadilha para o candidato que julga com o coração. O gestor público não pode agir como na iniciativa privada. Mesmo na urgência (que justificaria um contrato temporário), a forma ESCRITA e o rito legal mínimo são indispensáveis. Contrato verbal de pessoal é nulo.</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q6">
+            <div class="statement">
+                6. (Princípios Implícitos / FGV) Um servidor efetivo de uma escola comete uma infração disciplinar leve (atrasos reiterados justificados por obras no trânsito). A comissão de Processo Administrativo Disciplinar (PAD), aplicando a literalidade fria de um decreto municipal obsoleto, aplica a pena máxima de demissão. O Judiciário anula a punição. Essa anulação judicial fundamenta-se primordialmente na violação ao princípio implícito da:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) Impessoalidade, configurando indevida invasão do Judiciário no mérito do ato administrativo.</button>
+                <button class="option-btn" data-correct="true">B) Razoabilidade e Proporcionalidade, servindo como limite à discricionariedade e controle de legitimidade da sanção.</button>
+                <button class="option-btn" data-correct="false">C) Moralidade, presumindo-se a má-fé da comissão processante ao aplicar a pena capital administrativa.</button>
+                <button class="option-btn" data-correct="false">D) Especialidade, uma vez que sanções pedagógicas diferem de sanções estatutárias puras.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei / Doutrina:</strong> Princípios implícitos na CF/88 e explícitos no Art. 2º da Lei 9.784/99. A sanção deve ser proporcional à gravidade da falta.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: Bancas de alto nível exigem que você saiba que o Judiciário PODE anular punições desproporcionais. Isso não é "invadir o mérito" (escolha política do gestor), mas sim fazer o controle da legalidade/legitimidade (adequação, necessidade e proporcionalidade estrita).</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q7">
+            <div class="statement">
+                7. (Doutrina / FCC) A dicotomia basilar do Direito Administrativo, cunhada por Celso Antônio Bandeira de Mello, que serve de fundação para todos os demais princípios e prerrogativas da Administração Pública, é representada pelos princípios da:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="true">A) Supremacia do Interesse Público sobre o Privado e Indisponibilidade do Interesse Público.</button>
+                <button class="option-btn" data-correct="false">B) Legalidade Estrita e Eficiência Gerencial.</button>
+                <button class="option-btn" data-correct="false">C) Publicidade Transparente e Moralidade Probicrática.</button>
+                <button class="option-btn" data-correct="false">D) Autotutela Decadencial e Continuidade Ininterrupta.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Doutrina:</strong> As chamadas "pedras de toque" ou "supraprincípios" do Regime Jurídico Administrativo.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: Supremacia dá os PODERES (desapropriar, aplicar multas, intervir - relação vertical). Indisponibilidade impõe os DEVERES (fazer licitação, concurso público, prestar contas). O gestor cuida do que não é dele, logo, não pode dispor (abrir mão) do interesse público.</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q8">
+            <div class="statement">
+                8. (Jurisprudência STF / CEBRASPE) O recém-empossado Secretário Municipal de Educação adquire novos uniformes escolares para toda a rede. Nas camisas, determina a impressão de um grande girassol (símbolo amplamente conhecido de sua campanha eleitoral passada) e o lema "Acelerando a Educação". Segundo a Constituição Federal, tal ato:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) É lícito, desde que não contenha expressamente o nome civil ou a fotografia do Secretário.</button>
+                <button class="option-btn" data-correct="false">B) Fere a publicidade, mas configura mero erro formal passível de ajustamento de conduta sem configuração de improbidade.</button>
+                <button class="option-btn" data-correct="true">C) Viola a Impessoalidade, sendo vedada a utilização de símbolos ou imagens que caracterizem promoção pessoal de autoridades ou servidores.</button>
+                <button class="option-btn" data-correct="false">D) Respeita a autonomia gerencial do município, amparada pelo princípio da especialidade e do pluralismo de ideias.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 37, § 1º, da CF/88. A publicidade dos atos, programas, obras, serviços e campanhas dos órgãos públicos deverá ter caráter educativo, informativo ou de orientação social, dela não podendo constar nomes, símbolos ou imagens que caracterizem promoção pessoal.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: A banca tenta te enganar dizendo que "se não tem o nome, pode". Errado! O uso de *símbolos*, *cores de campanha*, *slogans* ou *logomarcas* que liguem a obra à figura do político caracteriza promoção pessoal e viola a IMPESSOALIDADE, configurando ato de improbidade.</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q9">
+            <div class="statement">
+                9. (Doutrina / FGV) A Secretaria de Educação expediu, durante uma década, orientações normativas autorizando a acumulação de dois cargos de professor de 40 horas semanais. Ao assumir, a nova gestão altera a interpretação jurídica interna, passando a considerar ilegal a jornada superior a 60 horas conjuntas. A decisão de aplicar a nova interpretação retroativamente para anular as aposentadorias já concedidas afronta diretamente o princípio da:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="true">A) Proteção à Confiança Legítima (Segurança Jurídica), sendo vedada a aplicação retroativa de nova interpretação administrativa.</button>
+                <button class="option-btn" data-correct="false">B) Legalidade Estrita, que autoriza a revisão a qualquer tempo de atos viciados na origem.</button>
+                <button class="option-btn" data-correct="false">C) Economicidade, ao onerar os cofres públicos com indevida manutenção de duplo teto.</button>
+                <button class="option-btn" data-correct="false">D) Eficiência, por desconsiderar o desgaste físico do docente submetido a jornadas exaustivas.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 2º, parágrafo único, inciso XIII, da Lei nº 9.784/99. Exige-se a "interpretação da norma administrativa da forma que melhor garanta o fim público a que se dirige, vedada aplicação retroativa de nova interpretação".</div>
+                <div class="pulo-gato">💡 Pulo do Gato: O Estado pode mudar de ideia sobre como interpreta uma lei? Sim. Ele pode aplicar essa nova regra para o PASSADO prejudicando quem agiu de boa-fé confiando na palavra anterior do Estado? NÃO! A Segurança Jurídica veda a retroatividade de nova interpretação.</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q10">
+            <div class="statement">
+                10. (Conceitos Avançados / Vunesp) O princípio implícito que impõe à Administração Pública a busca não apenas pela mera aplicação da lei, mas por uma atuação ética, de boa-fé, lealdade e probidade nas relações com os administrados (como na condução transparente de editais de concursos públicos para o magistério), é conceituado na doutrina moderna como:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) Impessoalidade Finalística.</button>
+                <button class="option-btn" data-correct="true">B) Moralidade Administrativa (em sua vertente jurídica e autônoma).</button>
+                <button class="option-btn" data-correct="false">C) Publicidade Estrita.</button>
+                <button class="option-btn" data-correct="false">D) Motivação Doutrinária.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei / Doutrina:</strong> Art. 37, *caput* da CF/88. A moralidade administrativa difere da moral comum. Trata-se de regra de direito (jurídica), passível de anulação de atos que, mesmo "legais" na forma, sejam desonestos ou desarrazoados no fundo.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: Trocar "ética, boa-fé e honestidade" por "cumprimento da lei" é a pegadinha. O mero cumprimento frio da lei atende à Legalidade. A atuação pautada na lealdade, ética e probidade atinge a MORALIDADE ADMINISTRATIVA.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.question-card');
+
+            cards.forEach(card => {
+                const buttons = card.querySelectorAll('.option-btn');
+                const feedback = card.querySelector('.feedback-box');
+
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        // Se já foi respondida, ignora clique
+                        if (card.classList.contains('answered')) return;
+
+                        const isCorrect = button.dataset.correct === 'true';
+                        
+                        // Marca a questão como respondida
+                        card.classList.add('answered');
+
+                        // Desabilita todos os botões da questão
+                        buttons.forEach(btn => {
+                            btn.classList.add('disabled');
+                            // Mostra qual era a correta para o aluno aprender
+                            if (btn.dataset.correct === 'true') {
+                                btn.classList.add('correct');
+                            }
+                        });
+
+                        // Se o aluno errou, pinta a que ele clicou de vermelho
+                        if (!isCorrect) {
+                            button.classList.add('incorrect');
+                        }
+
+                        // Exibe o box de explicação
+                        feedback.style.display = 'block';
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
