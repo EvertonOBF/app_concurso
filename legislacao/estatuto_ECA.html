@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado: ECA na Educação</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --primary: #0f172a;
+            --accent: #0284c7;
+            --correct-bg: #16a34a;
+            --incorrect-bg: #dc2626;
+            --feedback-bg: #f0f9ff;
+            --border-color: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .header {
+            max-width: 850px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .header h1 { font-size: 1.6rem; font-weight: 600; }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .question-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+        }
+
+        .statement {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-btn {
+            width: 100%;
+            text-align: left;
+            padding: 14px 18px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--text-main);
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn:hover:not(.disabled) {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        .option-btn.correct {
+            background-color: var(--correct-bg) !important;
+            border-color: var(--correct-bg) !important;
+            color: white !important;
+            font-weight: 600;
+        }
+
+        .option-btn.incorrect {
+            background-color: var(--incorrect-bg) !important;
+            border-color: var(--incorrect-bg) !important;
+            color: white !important;
+            font-weight: 600;
+        }
+
+        .option-btn.disabled { cursor: default; }
+
+        .feedback-box {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 8px;
+            background-color: var(--feedback-bg);
+            border-left: 5px solid var(--accent);
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .feedback-box .lei {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: var(--primary);
+        }
+
+        .feedback-box .pulo-gato {
+            display: block;
+            padding: 10px 12px;
+            background-color: #fef3c7;
+            border-radius: 6px;
+            color: #92400e;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .question-card { padding: 15px; }
+            .statement { font-size: 1.05rem; }
+            .option-btn { padding: 12px 15px; font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Simulado: Estatuto da Criança e do Adolescente (ECA)</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="question-card" id="q1">
+            <div class="statement">
+                1. Conforme expressa previsão do Estatuto da Criança e do Adolescente (Art. 53), é direito da criança e do adolescente ter acesso à escola pública e gratuita próxima de sua residência, garantindo-se vagas no mesmo estabelecimento a irmãos que frequentem:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) Qualquer etapa ou modalidade da educação básica, independentemente do ciclo escolar.</button>
+                <button class="option-btn" data-correct="true">B) A mesma etapa ou ciclo de ensino da educação básica.</button>
+                <button class="option-btn" data-correct="false">C) Exclusivamente o ensino fundamental, sendo facultativo na educação infantil.</button>
+                <button class="option-btn" data-correct="false">D) A mesma rede de ensino, ainda que em bairros distintos.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 53, inciso V do ECA. É direito da criança e do adolescente o acesso à escola pública e gratuita, garantindo-se vagas no mesmo estabelecimento a irmãos que frequentem a mesma etapa ou ciclo de ensino da educação básica.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: As bancas adoram omitir o final do inciso. A garantia de vaga no mesmo estabelecimento para irmãos exige que eles estejam na *mesma etapa ou ciclo* (ex: ambos no Ensino Fundamental I). Se um está na Creche e o outro no Ensino Médio, a lei não obriga que seja no mesmo prédio.</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q2">
+            <div class="statement">
+                2. Os dirigentes de estabelecimentos de ensino fundamental comunicarão ao Conselho Tutelar os casos de reiteração de faltas injustificadas e de evasão escolar:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) Imediatamente após a primeira ausência não justificada do aluno.</button>
+                <button class="option-btn" data-correct="false">B) Concomitantemente com a notificação ao Ministério Público e à Vara da Infância.</button>
+                <button class="option-btn" data-correct="true">C) Esgotados os recursos escolares.</button>
+                <button class="option-btn" data-correct="false">D) Apenas quando ultrapassado o limite de 50% do total de horas letivas permitidas para reprovação.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 56, inciso II do ECA. Os dirigentes de estabelecimentos de ensino fundamental comunicarão ao Conselho Tutelar os casos de: reiteração de faltas injustificadas e de evasão escolar, esgotados os recursos escolares.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: O Conselho Tutelar não é a primeira instância para faltas! A escola deve primeiro usar suas ferramentas pedagógicas (ligar para a família, notificar, fazer busca ativa). Somente após *esgotados os recursos escolares* o Conselho Tutelar deve ser acionado para tratar da infrequência.</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q3">
+            <div class="statement">
+                3. Uma estudante de 14 anos discorda frontalmente dos critérios avaliativos adotados por seu professor de História, alegando falta de clareza na correção de sua prova. Nos termos do ECA, em relação aos critérios avaliativos, o aluno:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) Deve acatar a nota, pois a liberdade de cátedra confere soberania irrecorrível ao docente em sala de aula.</button>
+                <button class="option-btn" data-correct="false">B) Pode contestá-los apenas perante o grêmio estudantil, que mediará o conflito com a direção.</button>
+                <button class="option-btn" data-correct="true">C) Tem o direito de contestar critérios avaliativos, podendo recorrer às instâncias escolares superiores.</button>
+                <button class="option-btn" data-correct="false">D) Poderá solicitar revisão diretamente à Secretaria de Educação, pulando as instâncias internas da escola.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 53, inciso III do ECA. É assegurado à criança e ao adolescente o direito de contestar critérios avaliativos, podendo recorrer às instâncias escolares superiores.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: A banca costuma afirmar que o aluno não pode questionar o professor ou que a decisão do docente é definitiva. O ECA garante o direito de contestação e o recurso às instâncias superiores da própria escola (Conselho de Classe, Direção).</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q4">
+            <div class="statement">
+                4. No que tange ao dever do Estado com a educação, o ECA (Art. 54) estabelece a garantia de atendimento educacional especializado às pessoas com deficiência:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="true">A) Preferencialmente na rede regular de ensino.</button>
+                <button class="option-btn" data-correct="false">B) Exclusivamente em instituições de educação especial filantrópicas ou públicas.</button>
+                <button class="option-btn" data-correct="false">C) Obrigatoriamente em classes especiais separadas dos demais alunos.</button>
+                <button class="option-btn" data-correct="false">D) Prioritariamente no contraturno escolar, dispensando-se a matrícula no ensino regular.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 54, inciso III do ECA. É dever do Estado assegurar: atendimento educacional especializado às pessoas com deficiência, preferencialmente na rede regular de ensino.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: Palavra-chave perigosa! As bancas adoram trocar "preferencialmente" por "exclusivamente" ou "obrigatoriamente". O atendimento é *preferencialmente* na rede regular, promovendo a inclusão, mas admitindo exceções quando a deficiência exigir apoio mais intensivo em locais específicos.</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q5">
+            <div class="statement">
+                5. Acerca da responsabilidade dos pais ou responsáveis em relação à educação dos filhos, assinale a alternativa que reflete fielmente o texto do ECA (Art. 55):
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) É faculdade dos pais ou responsáveis matricular seus filhos ou pupilos na rede regular de ensino, sendo permitida a educação estritamente domiciliar sem supervisão.</button>
+                <button class="option-btn" data-correct="true">B) Os pais ou responsáveis têm a obrigação de matricular seus filhos ou pupilos na rede regular de ensino.</button>
+                <button class="option-btn" data-correct="false">C) O dever dos pais limita-se ao acompanhamento da frequência escolar, recaindo sobre o Estado a obrigação da matrícula automática.</button>
+                <button class="option-btn" data-correct="false">D) A matrícula na rede regular é obrigatória apenas a partir do ingresso no ensino fundamental aos 6 anos de idade.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 55 do ECA. Os pais ou responsáveis têm a obrigação de matricular seus filhos ou pupilos na rede regular de ensino.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: Trocar "obrigação/dever" por "direito/faculdade" é o truque clássico. Matricular os filhos não é uma escolha, é uma imposição legal. O descumprimento pode configurar crime de abandono intelectual.</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q6">
+            <div class="statement">
+                6. (Caso Prático) Durante o horário do recreio, um professor percebe que uma criança de 8 anos apresenta hematomas graves e queimaduras incompatíveis com quedas acidentais. Ao ser questionada com cuidado, a criança relata que apanhou do padrasto como castigo. Diante dessa situação, o dirigente do estabelecimento de ensino tem o dever legal de comunicar o fato ao:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) Juizado da Infância e da Juventude, exclusivamente.</button>
+                <button class="option-btn" data-correct="false">B) Ministério Público Estadual, no prazo máximo de 48 horas.</button>
+                <button class="option-btn" data-correct="true">C) Conselho Tutelar.</button>
+                <button class="option-btn" data-correct="false">D) Órgão policial local (Delegacia), dispensando-se a notificação aos órgãos de proteção pedagógica.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 56, inciso I do ECA. Os dirigentes de estabelecimentos de ensino fundamental comunicarão ao Conselho Tutelar os casos de: maus-tratos envolvendo seus alunos.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: Em caso de suspeita ou confirmação de maus-tratos, a comunicação ao *Conselho Tutelar* é obrigatória para a escola. As bancas costumam colocar a Polícia, o Promotor ou o Juiz como resposta correta para confundir o candidato, mas a lei aponta expressamente o Conselho Tutelar.</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q7">
+            <div class="statement">
+                7. O Estatuto da Criança e do Adolescente garante o direito de organização e participação em entidades estudantis (como grêmios). Sobre esse direito, é correto afirmar que:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) É condicionado à prévia autorização e regulamentação da direção da escola.</button>
+                <button class="option-btn" data-correct="false">B) Restringe-se aos alunos regularmente matriculados no ensino médio.</button>
+                <button class="option-btn" data-correct="true">C) É assegurado de forma plena à criança e ao adolescente, sem exigência de concordância diretiva para sua existência legal.</button>
+                <button class="option-btn" data-correct="false">D) É permitido, vedando-se, contudo, a manifestação política ou representação externa aos muros escolares.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 53, inciso IV do ECA. É assegurado o direito de organização e participação em entidades estudantis.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: As bancas inventam que a direção precisa "autorizar" ou que existe limite de idade (apenas adolescentes). O direito é assegurado de forma autônoma para crianças e adolescentes.</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q8">
+            <div class="statement">
+                8. Além dos casos de maus-tratos e da reiteração de faltas injustificadas/evasão, o Artigo 56 do ECA impõe aos dirigentes de estabelecimentos de ensino o dever de comunicar ao Conselho Tutelar os casos de:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) Indisciplina em sala de aula.</button>
+                <button class="option-btn" data-correct="true">B) Elevados níveis de repetência.</button>
+                <button class="option-btn" data-correct="false">C) Atrasos na entrega de documentação escolar pela família.</button>
+                <button class="option-btn" data-correct="false">D) Dificuldade severa de aprendizagem sem laudo médico.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 56, inciso III do ECA. Comunicarão ao Conselho Tutelar os casos de: elevados níveis de repetência.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: O trio de comunicação obrigatória ao CT pelo Art. 56 é: 1) Maus-tratos; 2) Faltas/Evasão (esgotados recursos); 3) Elevados níveis de repetência. A repetência excessiva aponta falha na garantia do direito à educação e deve ser acompanhada pelo órgão de proteção.</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q9">
+            <div class="statement">
+                9. O dever do Estado de assegurar a oferta de ensino noturno regular, conforme preconiza o ECA (Art. 54, VI), deve ser implementado de forma:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="true">A) Adequada às condições do adolescente trabalhador.</button>
+                <button class="option-btn" data-correct="false">B) Idêntica à carga horária e metodologia aplicada no período diurno, sem distinções.</button>
+                <button class="option-btn" data-correct="false">C) EAD (Educação a Distância), para otimizar o tempo do estudante que exerce atividade remunerada.</button>
+                <button class="option-btn" data-correct="false">D) Condicionada à comprovação formal de vínculo empregatício sob regime da CLT.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 54, inciso VI do ECA. É dever do Estado assegurar: oferta de ensino noturno regular, adequado às condições do adolescente trabalhador.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: A palavra-chave é a *adequação*. A escola deve se adaptar à realidade do estudante que trabalha (flexibilidade pedagógica), e não simplesmente replicar o modelo diurno rigidamente.</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q10">
+            <div class="statement">
+                10. Nos termos do Art. 18-A do ECA (incluído pela Lei do Menino Bernardo), a criança e o adolescente têm o direito de ser educados e cuidados sem o uso de castigo físico ou de tratamento cruel ou degradante. O texto legal define "tratamento cruel ou degradante" como a conduta ou forma cruel de tratamento que:
+            </div>
+            <div class="options-grid">
+                <button class="option-btn" data-correct="false">A) Resulte exclusivamente em lesão física grave ou interna.</button>
+                <button class="option-btn" data-correct="true">B) Humilhe, ameace gravemente ou ridicularize a criança ou o adolescente.</button>
+                <button class="option-btn" data-correct="false">C) Envolva o uso de força física com o objetivo de causar sofrimento corporal.</button>
+                <button class="option-btn" data-correct="false">D) Imponha tarefas pedagógicas extras como forma de correção disciplinar.</button>
+            </div>
+            <div class="feedback-box">
+                <div class="lei"><strong>O que diz a Lei:</strong> Art. 18-A, parágrafo único, inciso II do ECA. Tratamento cruel ou degradante: conduta ou forma cruel de tratamento em relação à criança ou ao adolescente que: a) humilhe; b) ameace gravemente; ou c) ridicularize.</div>
+                <div class="pulo-gato">💡 Pulo do Gato: É preciso distinguir os dois conceitos do artigo: *Castigo Físico* envolve força física resultando em sofrimento corporal ou lesão. Já o *Tratamento Cruel ou Degradante* atinge o aspecto psicológico e moral (humilhar, ameaçar, ridicularizar).</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.question-card');
+
+            cards.forEach(card => {
+                const buttons = card.querySelectorAll('.option-btn');
+                const feedback = card.querySelector('.feedback-box');
+
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        if (card.classList.contains('answered')) return;
+
+                        const isCorrect = button.dataset.correct === 'true';
+                        card.classList.add('answered');
+
+                        buttons.forEach(btn => {
+                            btn.classList.add('disabled');
+                            if (btn.dataset.correct === 'true') {
+                                btn.classList.add('correct');
+                            }
+                        });
+
+                        if (!isCorrect) {
+                            button.classList.add('incorrect');
+                        }
+
+                        feedback.style.display = 'block';
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
