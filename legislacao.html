@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulados - Legislação</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Legislação">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 40px 20px;
+            color: #444444;
+        }
+        h1 { 
+            color: #2c3e50; 
+            margin-bottom: 10px; 
+            text-align: justify; 
+            font-weight: normal;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            width: 100%;
+        }
+        p { 
+            color: #555555; 
+            margin-bottom: 40px; 
+            text-align: justify; 
+            font-size: 1.1em;
+        }
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background-color: #ffffff;
+            color: #444444;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border: 1px solid #e0e0e0;
+            border-left: 6px solid #3498db;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-align: justify;
+            box-sizing: border-box;
+        }
+        .btn:hover {
+            background-color: #f8fafc;
+            border-left-color: #2980b9;
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            color: #2c3e50;
+        }
+        .btn:active { 
+            transform: scale(0.98); 
+        }
+
+        .btn-back {
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #7f8c8d;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .btn-back:hover { 
+            color: #2c3e50; 
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="btn-back">← Voltar ao Menu Principal</a>
+
+    <h1>Módulo de Legislação</h1>
+    <p>Selecione abaixo o simulado desejado para testar seus conhecimentos:</p>
+
+    <div class="menu-container">
+        <a href="constituicao_federal.html" class="btn">Constituição Federal</a>
+        <a href="estrutura_adm_publica.html" class="btn">Conceitos de administração pública</a>
+        <a href="simulado_normas_tecnicas.html" class="btn">Princípios da administração pública</a>
+        <a href="simulado_revisao_geral.html" class="btn">Estatuto da criança e do adolescente</a>
+    </div>
+    
+</body>
+</html>
